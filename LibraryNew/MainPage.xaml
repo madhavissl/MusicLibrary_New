@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="LibraryNew.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibraryNew"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="Aqua">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="169*"/>
+            <ColumnDefinition  Width="331*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="100,0,0,0" Text="My Music Library" FontSize="30" TextWrapping="Wrap" VerticalAlignment="Top" Height="64" Width="572" Grid.ColumnSpan="2"/>
+        <ListView ItemsSource="{x:Bind MusicList}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="50,50,400,80" VerticalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Song    : " />
+                            <TextBlock Text="{Binding FileName}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Album : " />
+                            <TextBlock Text="{Binding Album}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="           " />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <MediaPlayerElement Name="mediaPlayer" AreTransportControlsEnabled="True" VerticalAlignment="Bottom" Height="100" Margin="10,0,0,10" FocusVisualPrimaryBrush="{x:Null}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" />
+        <TextBlock  Margin="800,600,0,0" Text="Album" FontSize="30" TextWrapping="Wrap"/>
+        <CommandBar  Grid.Column="1" Margin="573,159,100,0" VerticalAlignment="Bottom" Height="208">
+            <AppBarButton Icon="Cancel" Label="Exit" Click="ExitApp_Click" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        </CommandBar>
+    </Grid>
+
+</Page>
